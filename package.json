@@ -1,0 +1,14 @@
+{
+  "name": "mctsjs",
+  "version": "0.0.0",
+  "description": "Fast generation of js through mcts and policy heuristics",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hobinjk@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "recast": "^0.11.12"
+  }
+}
