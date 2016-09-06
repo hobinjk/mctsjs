@@ -6,6 +6,9 @@ const b = recast.types.builders;
 // const literals = [-1, 0, 1, 2];
 const binops = ['+', '-', '*', '/'];
 
+const MAX_DEPTH = 3;
+const TIMEOUT = 3000;
+
 /**
  * @constructor
  * @param {?Node} parent - Parent node
@@ -50,7 +53,7 @@ function nextStates(state) {
   const nextVar = nextVariable(state);
 
   let potentialAssignments = [];
-  if (state.fnBody.length < 10) {
+  if (state.fnBody.length < MAX_DEPTH) {
     for (let i = 0; i < state.variables.length; i++) {
       var lhs = state.variables[i];
       for (let j = i; j < state.variables.length; j++) {
@@ -289,6 +292,6 @@ expand(root);
 //   console.log(recast.print(fn).code);
 // });
 
-const best = treeSearch(root, 10000);
+const best = treeSearch(root, TIMEOUT);
 console.log(recast.print(makeFn(best)).code);
 
